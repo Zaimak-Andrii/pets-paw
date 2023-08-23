@@ -3,4 +3,7 @@ export enum Route {
   VOTING = '/voting',
   BREEDS = '/breeds',
   GALLERY = '/gallery',
+  LIKES = '/likes',
+  FAVOURITES = '/favourites',
+  DISLIKES = '/dislikes',
 }

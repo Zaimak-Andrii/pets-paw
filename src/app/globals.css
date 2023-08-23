@@ -15,3 +15,31 @@
 body {
   background-color: var(--bg-color);
 }
+
+@layer base {
+  svg {
+    @apply w-full h-full fill-current;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .page {
+    @apply flex flex-col gap-[10px] w-full h-full p-[30px];
+  }
+
+  .component-default {
+    @apply text-light-red tracking-[2px] uppercase bg-white rounded-[10px] transition-colors duration-300 group-hover:bg-rose group-data-[active='true']:bg-light-red group-data-[active='true']:text-white;
+  }
+
+  .component-white {
+    @apply text-light-red tracking-[2px] uppercase bg-white rounded-[10px] transition-colors duration-300 hover:bg-rose data-[active='true']:bg-light-red data-[active='true']:text-white;
+  }
+
+  .component-rose {
+    @apply text-light-red tracking-[2px] uppercase bg-rose rounded-[10px] transition-colors duration-300 hover:bg-light-red hover:text-white data-[active='true']:bg-light-red data-[active='true']:text-white;
+  }
+}

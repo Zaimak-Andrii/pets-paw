@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Jost } from 'next/font/google';
+import Container from '../components/Container';
+import SideBar from '../components/SideBar';
 import './globals.css';
 
 const jost = Jost({
@@ -16,8 +18,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={`${jost.className} w-full h-screen bg-light dark:bg-dark text-primary`}>{children}</body>
+    <html lang="en">
+      <body className={`${jost.className} w-full h-screen bg-light dark:bg-dark text-primary`}>
+        <Container className="flex w-full h-full">
+          <SideBar />
+          <main className="w-full">{children}</main>
+        </Container>
+      </body>
     </html>
   );
 }

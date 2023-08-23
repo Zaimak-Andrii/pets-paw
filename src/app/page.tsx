@@ -1,10 +1,5 @@
-import Navigation from './components/Navigation';
-
 export default function Home() {
   return (
-    <main className='flex'>
-      <Navigation />
-      <section className=''>right side</section>
-    </main>
+    <section className="w-full h-full bg-main-page-responsive bg-contain bg-center bg-no-repeat p-[30px] pl-[65px] before:relative before:z-[-1] before:block before:w-full before:h-full before:bg-rose before:rounded-[20px]"></section>
   );
 }
