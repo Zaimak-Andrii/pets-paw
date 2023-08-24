@@ -1,10 +1,11 @@
 'use client';
-import React, { FormEvent } from 'react';
+
 import useSWR from 'swr';
 import AppSelect from '../AppSelect/AppSelect';
 import AppButton from '../buttons/AppButton';
 import { RefreshIcon } from '../icons';
 import { getAllBreedsService } from '@/services/api';
+import { limitOptions, orderOptions, typeOptions } from '@/constants/selectOptions';
 
 type Props = {
   onChange: (filterType: 'order' | 'type' | 'breed' | 'limit', value: string) => void;
@@ -20,22 +21,15 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
         name="order"
         className="flex-grow w-[calc((100%-20px)/2)]"
         label="Order"
-        options={[
-          { label: 'Random', value: 'random' },
-          { label: 'Asc', value: 'asc' },
-          { label: 'Desc', value: 'desc' },
-        ]}
+        options={orderOptions}
         onChange={(value: string) => onChange('order', value)}
       />
+
       <AppSelect
         name="type"
         className="flex-grow w-[calc((100%-20px)/2)]"
         label="Type"
-        options={[
-          { label: 'All', value: 'jpg,gif,png' },
-          { label: 'Static', value: 'jpg,png' },
-          { label: 'Animated', value: 'gif' },
-        ]}
+        options={typeOptions}
         onChange={(value: string) => onChange('type', value)}
       />
 
@@ -49,20 +43,17 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
         ]}
         onChange={(value: string) => onChange('breed', value)}
       />
+
       <div className="flex items-end gap-[10px]  w-[calc((100%-20px)/2)]">
         <AppSelect
           name="limit"
           className="flex-grow"
           label="Limit"
-          options={[
-            { label: '5 items per page', value: '5' },
-            { label: '10 items per page', value: '10' },
-            { label: '15 items per page', value: '15' },
-            { label: '20 items per page', value: '20' },
-          ]}
+          options={limitOptions}
           onChange={(value: string) => onChange('limit', value)}
         />
-        <AppButton onClick={onRefresh}>
+
+        <AppButton variant="secondary" onClick={onRefresh} className="bg-white">
           <RefreshIcon />
         </AppButton>
       </div>

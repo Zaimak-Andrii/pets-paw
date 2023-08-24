@@ -2,6 +2,7 @@
 
 import { FavoriteIcon } from '@/components/icons';
 import { addToFavoriteService } from '@/services/api';
+import AppButton from '../AppButton/AppButton';
 
 type Props = {
   id: string;
@@ -13,8 +14,12 @@ export default function FavouriteButton({ id }: Props) {
   };
 
   return (
-    <button className="component-white w-[40px] h-[40px] p-[10px]" onClick={clickHandler}>
+    <AppButton
+      variant="secondary"
+      className="bg-white w-[40px] h-[40px] p-[10px]"
+      onClick={clickHandler}
+    >
       <FavoriteIcon />
-    </button>
+    </AppButton>
   );
 }

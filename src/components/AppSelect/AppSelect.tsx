@@ -9,7 +9,7 @@ type Props = {
   }[];
   label?: string;
   className?: string;
-  selectClass?: string;
+  variant?: 'primary' | 'secondary';
   onChange?: (value: string) => void;
 };
 
@@ -18,7 +18,7 @@ export default function AppSelect({
   label,
   options,
   className,
-  selectClass,
+  variant = 'primary',
   onChange,
 }: Props) {
   const changeHandler = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -28,20 +28,23 @@ export default function AppSelect({
   return (
     <label className={twMerge('flex flex-col', className)}>
       {label && <span className="text-[10px]/[1.8] font-medium uppercase">{label}</span>}
-      <select
-        name={name}
-        className={twMerge(
-          'h-[40px] px-[10px] py-[8px] bg-white rounded-[10px] text-dark text-[16px]/[1.5]',
-          selectClass
-        )}
-        onChange={changeHandler}
+      <span
+        className={`flex items-center h-[40px] pr-[10px] ${
+          variant === 'primary' ? 'bg-white text-dark' : 'bg-light text-primary'
+        }  rounded-[10px] border-2 border-transparent transition-border duration-300 hover:border-rose`}
       >
-        {options.map(({ label, value }) => (
-          <option key={value} value={value}>
-            {label}
-          </option>
-        ))}
-      </select>
+        <select
+          name={name}
+          className={`w-full h-full px-[10px] py-[6px] text-[16px]/[1.5] bg-transparent outline-none`}
+          onChange={changeHandler}
+        >
+          {options.map(({ label, value }) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </span>
     </label>
   );
 }

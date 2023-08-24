@@ -42,18 +42,16 @@ export default function Breeds() {
         <BreedsFilter onChange={changeFilterParams} />
       </div>
 
-      {isLoading && (
+      {isLoading ? (
         <div className="flex justify-center items-center w-full h-full">
           <Loader />
         </div>
-      )}
-
-      {isLoading ? null : error ? (
+      ) : error ? (
         <p className="bg-light px-[20px] py-[18px] text-[16px]/[1.5] rounded-[10px] text-light-red">
           {error.message}
         </p>
       ) : images.length > 0 ? (
-        <GalleryList list={images} variant="breed" />
+        <GalleryList list={images} />
       ) : (
         <p className="bg-light px-[20px] py-[18px] text-[16px]/[1.5] rounded-[10px]">
           No image found
