@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${jost.className} w-full h-screen bg-light dark:bg-dark text-primary`}>
         <Container className="flex w-full h-full">
           <SideBar />
-          <main className="w-full">{children}</main>
+          <main className="w-[740px]">{children}</main>
         </Container>
       </body>
     </html>

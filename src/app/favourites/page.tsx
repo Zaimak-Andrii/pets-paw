@@ -1,7 +1,11 @@
-import React from 'react';
+import PageHeader from '@/components/PageHeader';
+import Favourites from '@/components/Favourites';
 
-type Props = {};
-
-export default function FavouritesPage({}: Props) {
-  return <div>FavoritesPage</div>;
+export default function FavouritesPage() {
+  return (
+    <section className="page">
+      <PageHeader />
+      <Favourites />
+    </section>
+  );
 }

@@ -1,23 +1,32 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import { useIsActiveRoute } from '@/hooks';
+
+type Props = LinkProps & {
+  children: ReactNode;
+  className?: string;
+  variant?: 'primary' | 'secondary';
+};
 
 export default function AppLink({
   href,
   className,
   children,
+  variant = 'primary',
   ...props
-}: LinkProps & { className?: string; children: ReactNode }) {
+}: Props) {
   const isActive = useIsActiveRoute(href.toString(), true);
 
   return (
     <Link
       href={href}
       className={twMerge(
-        'flex justify-center items-center component-white w-[60px] h-[60px] p-[15px] text-[20px]/[1.5] rounded-[20px]',
+        `${
+          variant === 'primary' ? 'component-white' : 'component-rose'
+        } flex justify-center items-center gap-[10px] p-[10px]`,
         className
       )}
       data-active={isActive}

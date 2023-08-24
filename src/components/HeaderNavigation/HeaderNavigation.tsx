@@ -13,7 +13,9 @@ export default function HeaderNavigation() {
     <ul className="flex gap-[10px]">
       {routes.map(({ route, icon }) => (
         <li key={route}>
-          <AppLink href={route}>{icon}</AppLink>
+          <AppLink href={route} className="w-[60px] h-[60px] p-[15px] rounded-[20px]">
+            {icon}
+          </AppLink>
         </li>
       ))}
     </ul>

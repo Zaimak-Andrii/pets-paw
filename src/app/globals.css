@@ -42,4 +42,8 @@ body {
   .component-rose {
     @apply text-light-red tracking-[2px] uppercase bg-rose rounded-[10px] transition-colors duration-300 hover:bg-light-red hover:text-white data-[active='true']:bg-light-red data-[active='true']:text-white;
   }
+
+  .component-gray {
+    @apply text-primary tracking-[2px] uppercase bg-light rounded-[10px] border-2 border-transparent transition-colors duration-300 hover:border-2 hover:border-rose hover:text-light-red data-[active='true']:bg-light-red data-[active='true']:text-white;
+  }
 }

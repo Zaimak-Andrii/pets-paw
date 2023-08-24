@@ -40,6 +40,12 @@ const config: Config = {
     plugin(function ({ addVariant }) {
       addVariant('hover-not-focus', '&:hover:not(:focus-within)');
     }),
+    plugin(function ({ addVariant }) {
+      addVariant('grid-1-8', ['&:nth-child(10n + 1)', '&:nth-child(10n + 8)']);
+    }),
+    plugin(function ({ addVariant }) {
+      addVariant('grid-4-9', ['&:nth-child(10n + 4)', '&:nth-child(10n + 9)']);
+    }),
   ],
 };
 export default config;
