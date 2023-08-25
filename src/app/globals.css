@@ -17,6 +17,10 @@ body {
 }
 
 @layer base {
+  body {
+    @apply text-[16px]/[1.5];
+  }
+
   svg {
     @apply w-full h-full fill-current;
   }
@@ -29,6 +33,10 @@ body {
 @layer components {
   .page {
     @apply flex flex-col gap-[10px] w-full h-full p-[30px];
+  }
+
+  .section {
+    @apply flex flex-col gap-[20px] w-full h-full p-[20px] overflow-hidden bg-white rounded-[20px];
   }
 
   .component-default {
@@ -45,5 +53,18 @@ body {
 
   .component-gray {
     @apply text-primary tracking-[2px] uppercase bg-light rounded-[10px] border-2 border-transparent transition-colors duration-300 hover:border-2 hover:border-rose hover:text-light-red data-[active='true']:bg-light-red data-[active='true']:text-white;
+  }
+
+  .skeleton {
+    background: linear-gradient(110deg, #ececec 8%, #f8f8f8 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
+
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
   }
 }

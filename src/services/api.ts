@@ -88,3 +88,53 @@ export const getBreedsImagesService = async (
 
   return await result.json();
 };
+
+export const getRandomImageService = async (): Promise<CatType | undefined> => {
+  const urlParams = new URLSearchParams({
+    page: '0',
+    limit: '1',
+    order: 'random',
+  });
+
+  const result = await privateFetch(`${url}/images/search?${urlParams}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  const data = await result.json();
+
+  return data.at(0);
+};
+
+export const addToLikeService = async (id: string) => {
+  const rawBody = JSON.stringify({
+    image_id: id,
+    sub_id: user,
+    value: 1,
+  });
+
+  const result = await privateFetch(`${url}/votes`, {
+    method: 'POST',
+    body: rawBody,
+  });
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
+};
+
+export const addToDislikeService = async (id: string) => {
+  const rawBody = JSON.stringify({
+    image_id: id,
+    sub_id: user,
+    value: -1,
+  });
+
+  const result = await privateFetch(`${url}/votes`, {
+    method: 'POST',
+    body: rawBody,
+  });
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
+};

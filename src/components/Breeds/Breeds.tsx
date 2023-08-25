@@ -36,7 +36,7 @@ export default function Breeds() {
   };
 
   return (
-    <section className="flex flex-col gap-[20px] w-full h- h-full p-[20px] overflow-hidden bg-white rounded-[20px]">
+    <section className="section">
       <div className="flex gap-[10px]">
         <Breadcrumb />
         <BreedsFilter onChange={changeFilterParams} />
