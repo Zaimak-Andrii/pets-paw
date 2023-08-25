@@ -51,7 +51,7 @@ export default function Breeds() {
           {error.message}
         </p>
       ) : images.length > 0 ? (
-        <GalleryList list={images} />
+        <GalleryList variant="breed" list={images} />
       ) : (
         <p className="bg-light px-[20px] py-[18px] text-[16px]/[1.5] rounded-[10px]">
           No image found

@@ -5,7 +5,7 @@ import GalleryItem from './GalleryItem';
 
 type Props = {
   list: CatType[];
-  variant?: 'favourite' | 'breed';
+  variant?: 'favourite' | 'breed' | 'none';
 };
 
 export default function GalleryList({ list, variant = 'favourite' }: Props) {

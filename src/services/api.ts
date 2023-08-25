@@ -138,3 +138,31 @@ export const addToDislikeService = async (id: string) => {
 
   return await result.json();
 };
+
+export const getLikesService = async () => {
+  const urlParams = new URLSearchParams({
+    sub_id: user,
+  });
+
+  const result = await privateFetch(`${url}/votes?${urlParams}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  const data: { image: CatType; value: number }[] = await result.json();
+
+  return data.reduce((acc: CatType[], item) => (item.value > 0 ? [...acc, item.image] : acc), []);
+};
+
+export const getDislikesService = async () => {
+  const urlParams = new URLSearchParams({
+    sub_id: user,
+  });
+
+  const result = await privateFetch(`${url}/votes?${urlParams}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  const data: { image: CatType; value: number }[] = await result.json();
+
+  return data.reduce((acc: CatType[], item) => (item.value < 0 ? [...acc, item.image] : acc), []);
+};

@@ -1,7 +1,11 @@
-import React from 'react';
+import Dislikes from '@/components/Dislikes';
+import PageHeader from '@/components/PageHeader';
 
-type Props = {};
-
-export default function DislikesPage({}: Props) {
-  return <div>DislikesPage</div>;
+export default function DislikesPage() {
+  return (
+    <section className="page">
+      <PageHeader />
+      <Dislikes />
+    </section>
+  );
 }
