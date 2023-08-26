@@ -1,6 +1,7 @@
-import { createElement } from 'react';
+import { ReactElement, createElement } from 'react';
 import type { LogMessageType } from '@/types';
 import { DislikeIcon, FavoriteIcon, LikeIcon } from '../icons';
+import { Message } from '../Message';
 
 const actionMessage: Record<LogMessageType['action'], string> = {
   like: 'was added to Likes',
@@ -31,16 +32,16 @@ const getActionIcon = (action: LogMessageType['action']) => {
 
 export default function LogItem({ time, imageId, action }: LogMessageType) {
   return (
-    <li className="flex items-center p-[15px] bg-light rounded-[10px]">
-      <p>
-        <span className="mr-[20px] px-[10px] py-[3px] text-dark bg-white rounded-[5px]">
-          {time}
-        </span>
-        <span>
-          Image ID: <span className="font-medium text-dark">{imageId}</span> {actionMessage[action]}
-        </span>
-      </p>
-      {action !== 'remove-favorite' && getActionIcon(action)}
+    <li>
+      <Message
+        className="p-[15px]"
+        startIcon={
+          <span className="px-[10px] py-[3px] text-dark bg-white rounded-[5px]">{time}</span>
+        }
+        endIcon={action !== 'remove-favorite' ? (getActionIcon(action) as ReactElement) : undefined}
+      >
+        Image ID: <span className="font-medium text-dark">{imageId}</span> {actionMessage[action]}
+      </Message>
     </li>
   );
 }

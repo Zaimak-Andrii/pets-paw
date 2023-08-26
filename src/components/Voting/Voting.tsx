@@ -55,7 +55,7 @@ export default function Voting() {
               height={360}
             />
           )}
-          <VotingButtons onClick={clickVoteHandler} />
+          <VotingButtons imageId={image?.id} onClick={clickVoteHandler} />
         </div>
         <LogsList logs={logs} />
       </div>

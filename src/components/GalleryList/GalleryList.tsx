@@ -4,6 +4,9 @@ import useSWR from 'swr';
 import type { CatType } from '@/types';
 import GalleryItem from './GalleryItem';
 import Loader from '../Loader';
+import Message from '../Message/Message';
+import { ErrorIcon } from '../icons';
+import { ErrorMessage } from '../Message';
 
 type GalleryOptionsType = { [key: string]: string };
 type Props = {
@@ -22,6 +25,8 @@ export default function GalleryList({ name, variant = 'favourite', requestFn, op
     options ? requestFn(options) : requestFn()
   );
 
+  console.log([name, ...Object.values(options ?? {})]);
+
   return (
     <>
       {isLoading ? (
@@ -29,9 +34,7 @@ export default function GalleryList({ name, variant = 'favourite', requestFn, op
           <Loader />
         </div>
       ) : error ? (
-        <p className="bg-light px-[20px] py-[18px] text-[16px]/[1.5] rounded-[10px] text-light-red">
-          {error.message}
-        </p>
+        <ErrorMessage>{error.message}</ErrorMessage>
       ) : list.length > 0 ? (
         <ul className="mx-[-20px] px-[20px] grid h-[calc(100%-60px)] grid-cols-3 auto-rows-[140px] gap-[20px] overflow-y-auto ">
           {list.map((image: CatType) => (
@@ -39,9 +42,7 @@ export default function GalleryList({ name, variant = 'favourite', requestFn, op
           ))}
         </ul>
       ) : (
-        <p className="bg-light px-[20px] py-[18px] text-[16px]/[1.5] rounded-[10px]">
-          No image found
-        </p>
+        <Message>No image found</Message>
       )}
     </>
   );

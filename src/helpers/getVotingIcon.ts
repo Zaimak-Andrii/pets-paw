@@ -1,4 +1,4 @@
-import { DislikeIcon, FavoriteIcon, LikeIcon } from '@/components/icons';
+import { DislikeIcon, FavoriteIcon, InFavoriteIcon, LikeIcon } from '@/components/icons';
 import type { VotingIconType } from '@/types';
 
 export const getVotingIcon = (action: VotingIconType) => {
@@ -6,6 +6,7 @@ export const getVotingIcon = (action: VotingIconType) => {
     like: LikeIcon,
     dislike: DislikeIcon,
     favourite: FavoriteIcon,
+    'in-favourite': InFavoriteIcon,
   };
 
   return icons[action];

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type VariantType = 'primary' | 'secondary' | 'tertiary';
@@ -30,7 +30,7 @@ export default function AppButton({
       className={twMerge(
         `${getVariant(
           variant
-        )} flex justify-center items-center gap-[10px] w-min-[40px] h-min-[40px] p-[10px] text-[12px]/[16px]`,
+        )} flex justify-center items-center gap-[10px] w-min-[40px] h-min-[40px] p-[10px] text-[12px]/[16px] disabled:cursor-not-allowed`,
         className
       )}
       {...props}

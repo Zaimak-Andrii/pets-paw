@@ -14,27 +14,6 @@ export const privateFetch = async (input: RequestInfo | URL, options?: RequestIn
   });
 };
 
-// export const getGalleryImagesServiceOld = async (
-//   order: string = 'random',
-//   type: string | null = null,
-//   breeds: string = 'none',
-//   limit: string = '5'
-// ) => {
-//   const urlParams = new URLSearchParams({
-//     page: '0',
-//     limit,
-//     order,
-//     breed_ids: breeds === 'none' ? '' : breeds,
-//     mime_types: type ?? '',
-//   });
-
-//   const result = await privateFetch(`${url}/images/search?${urlParams}`);
-
-//   if (!result.ok) throw new Error('Ooooops! Bad request!');
-
-//   return await result.json();
-// };
-
 export const addToFavoriteService = async (id: string) => {
   const rawBody = JSON.stringify({
     image_id: id,
@@ -44,6 +23,16 @@ export const addToFavoriteService = async (id: string) => {
   const result = await privateFetch(`${url}/favourites`, {
     method: 'POST',
     body: rawBody,
+  });
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
+};
+
+export const removeFromeFavoriteService = async (id: number) => {
+  const result = await privateFetch(`${url}/favourites/${id}`, {
+    method: 'DELETE',
   });
 
   if (!result.ok) throw new Error('Ooooops! Bad request!');
@@ -64,30 +53,10 @@ export const getFavoritesService = async (): Promise<CatType[]> => {
 
   if (!result.ok) throw new Error('Ooooops! Bad request!');
 
-  const data: { image: CatType }[] = await result.json();
+  const data: { id: number; image: CatType }[] = await result.json();
 
-  return data.map(i => i.image);
+  return data.map(i => ({ ...i.image, favouriteId: i.id }));
 };
-
-// export const getBreedsImagesServiceOld = async (
-//   order: string = 'random',
-//   breed: string = 'none',
-//   limit: string = '5'
-// ) => {
-//   const urlParams = new URLSearchParams({
-//     page: '0',
-//     limit,
-//     order,
-//     has_breeds: '1',
-//     breed_ids: breed === 'none' ? '' : breed,
-//   });
-
-//   const result = await privateFetch(`${url}/images/search?${urlParams}`);
-
-//   if (!result.ok) throw new Error('Ooooops! Bad request!');
-
-//   return await result.json();
-// };
 
 export const getRandomImageService = async (): Promise<CatType | undefined> => {
   const urlParams = new URLSearchParams({

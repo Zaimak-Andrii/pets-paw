@@ -61,11 +61,11 @@ body.modal-open {
   }
 
   .component-white {
-    @apply text-light-red tracking-[2px] uppercase bg-white rounded-[10px] transition-colors duration-300 hover:bg-rose data-[active='true']:bg-light-red data-[active='true']:text-white;
+    @apply text-light-red tracking-[2px] uppercase bg-white rounded-[10px] transition-colors duration-300 hover-not-disabled:bg-rose data-[active='true']:bg-light-red data-[active='true']:text-white;
   }
 
   .component-rose {
-    @apply text-light-red tracking-[2px] uppercase bg-rose rounded-[10px] transition-colors duration-300 hover:bg-light-red hover:text-white data-[active='true']:bg-light-red data-[active='true']:text-white;
+    @apply text-light-red tracking-[2px] uppercase bg-rose rounded-[10px] transition-colors duration-300 hover-not-disabled:bg-light-red hover-not-disabled:text-white data-[active='true']:bg-light-red data-[active='true']:text-white;
   }
 
   .component-red {

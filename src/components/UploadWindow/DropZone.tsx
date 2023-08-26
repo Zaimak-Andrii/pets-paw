@@ -31,7 +31,7 @@ export default function DropZone({ file, error, onChange }: Props) {
     <div
       {...getRootProps({
         className: twMerge(
-          'relative flex justify-center items-center w-full h-[320px] mb-[20px] p-[20px] bg-white bg-upload bg-no-repeat bg-center border-2 border-dashed border-rose rounded-[20px]',
+          'cursor-pointer relative flex justify-center items-center w-full h-[320px] mb-[20px] p-[20px] bg-white bg-upload bg-no-repeat bg-center border-2 border-dashed border-rose rounded-[20px]',
           `${error ? 'bg-rose border-light-red' : ''}`
         ),
       })}
@@ -40,9 +40,9 @@ export default function DropZone({ file, error, onChange }: Props) {
         <>
           <input {...getInputProps()} />
           {isDragActive ? (
-            <p>Drop the files here ...</p>
+            <p className="select-none">Drop the files here ...</p>
           ) : (
-            <p>
+            <p className="select-none">
               <span className="text-dark font-medium">Drag here</span> your file or{' '}
               <span className="text-dark font-medium">Click here</span> to upload
             </p>

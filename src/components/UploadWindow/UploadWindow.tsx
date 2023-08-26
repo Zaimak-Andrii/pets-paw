@@ -1,14 +1,15 @@
 'use client';
 
-import { MouseEvent, createElement, useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
+import { ClipLoader } from 'react-spinners';
 import Container from '../Container';
 import AppButton from '../buttons/AppButton/AppButton';
 import { CloseIcon } from '../icons';
 import DropZone from './DropZone';
 import { uploadFileService } from '@/services/api';
-import { getVotingIcon } from '@/helpers';
+import { ErrorMessage, SuccessMessage } from '../Message';
 
 type Props = {
   onClose: () => void;
@@ -42,6 +43,10 @@ export default function UploadWindow({ onClose }: Props) {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    setError(null);
+  }, [file]);
 
   useEffect(() => {
     const keyDownHandler = (evt: KeyboardEvent) => {
@@ -90,11 +95,11 @@ export default function UploadWindow({ onClose }: Props) {
                 {!error && (
                   <AppButton
                     variant="secondary"
-                    className="component-red mx-auto"
+                    className="component-red mx-auto px-[30px] py-[12px] gap-[10px]"
                     onClick={uploadHandler}
                     disabled={isLoading}
                   >
-                    {isLoading && '...'} Upload photo
+                    {isLoading && <ClipLoader size={16} color="#ffffff" />} Upload photo
                   </AppButton>
                 )}
               </>
@@ -102,23 +107,9 @@ export default function UploadWindow({ onClose }: Props) {
               <p className="w-fit mx-auto mb-[20px]">No file selected</p>
             )}
 
-            {message && !file && (
-              <div className="flex items-center gap-[10px] px-[20px] py-[18px] text-[16px] bg-white rounded-[10px]">
-                {createElement(getVotingIcon('like'), {
-                  className: 'w-[20px] h-[20px] text-light-green',
-                })}
-                <p>{message}</p>
-              </div>
-            )}
+            {message && !file && <SuccessMessage variant="white">{message}</SuccessMessage>}
 
-            {error && (
-              <div className="flex items-center gap-[10px] px-[20px] py-[18px] text-[16px] bg-white rounded-[10px]">
-                {createElement(getVotingIcon('dislike'), {
-                  className: 'w-[20px] h-[20px] text-light-red',
-                })}
-                <p>{error}</p>
-              </div>
-            )}
+            {error && <ErrorMessage variant="white">{error}</ErrorMessage>}
           </div>
         </Container>
       </div>,

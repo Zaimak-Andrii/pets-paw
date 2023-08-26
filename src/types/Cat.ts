@@ -15,5 +15,6 @@ export type BreedType = {
 export type CatType = {
   id: string;
   url: string;
+  favouriteId: number;
   breeds: BreedType[];
 };
