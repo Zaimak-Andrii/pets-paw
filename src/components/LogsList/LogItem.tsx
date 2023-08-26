@@ -1,6 +1,6 @@
 import { ReactElement, createElement } from 'react';
 import type { LogMessageType } from '@/types';
-import { DislikeIcon, FavoriteIcon, LikeIcon } from '../icons';
+import { DislikeIcon, FavoriteIcon, InFavoriteIcon, LikeIcon } from '../icons';
 import { Message } from '../Message';
 
 const actionMessage: Record<LogMessageType['action'], string> = {
@@ -8,6 +8,7 @@ const actionMessage: Record<LogMessageType['action'], string> = {
   dislike: 'was added to Dislikes',
   favourite: 'was added to Favourites',
   'remove-favorite': 'was removed from Favourites',
+  'in-favourite': '',
 };
 
 const getActionIcon = (action: LogMessageType['action']) => {
@@ -17,12 +18,14 @@ const getActionIcon = (action: LogMessageType['action']) => {
     like: LikeIcon,
     dislike: DislikeIcon,
     favourite: FavoriteIcon,
+    'in-favourite': InFavoriteIcon,
   };
 
   const iconColor: Record<typeof action, string> = {
     like: 'text-light-green',
     dislike: 'text-amber',
     favourite: 'text-light-red',
+    'in-favourite': 'text-light-red',
   };
 
   return createElement(icons[action], {
