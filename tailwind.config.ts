@@ -13,6 +13,7 @@ const config: Config = {
       backgroundImage: {
         'main-page-responsive':
           "image-set(url('/images/image-main-page@1x.webp') 1x, url('/images/image-main-page@2x.webp') 2x)",
+        upload: "url('/images/upload-bg.svg')",
       },
       transitionProperty: {
         border: 'border-color',
@@ -39,6 +40,9 @@ const config: Config = {
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant('hover-not-focus', '&:hover:not(:focus-within)');
+    }),
+    plugin(function ({ addVariant }) {
+      addVariant('hover-not-disabled', '&:hover:not(:disabled)');
     }),
     plugin(function ({ addVariant }) {
       addVariant('grid-1-8', ['&:nth-child(10n + 1)', '&:nth-child(10n + 8)']);

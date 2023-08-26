@@ -166,3 +166,29 @@ export const getDislikesService = async () => {
 
   return data.reduce((acc: CatType[], item) => (item.value < 0 ? [...acc, item.image] : acc), []);
 };
+
+export const getBreedInfoByIdService = async (id: string): Promise<BreedType> => {
+  const result = await fetch(`${url}/breeds/${id}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
+};
+
+export const uploadFileService = async (file: File) => {
+  const formdata = new FormData();
+  formdata.append('file', file);
+  formdata.append('sub_id', user);
+
+  const result = await fetch(`${url}/images/upload`, {
+    method: 'POST',
+    headers: {
+      'x-api-key': apiKey,
+    },
+    body: formdata,
+  });
+
+  if (!result.ok) throw new Error(await result.text());
+
+  return await result.json();
+};

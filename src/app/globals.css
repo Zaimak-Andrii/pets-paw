@@ -15,6 +15,9 @@
 body {
   background-color: var(--bg-color);
 }
+body.modal-open {
+  overflow: hidden;
+}
 
 @layer base {
   body {
@@ -49,6 +52,10 @@ body {
 
   .component-rose {
     @apply text-light-red tracking-[2px] uppercase bg-rose rounded-[10px] transition-colors duration-300 hover:bg-light-red hover:text-white data-[active='true']:bg-light-red data-[active='true']:text-white;
+  }
+
+  .component-red {
+    @apply text-white tracking-[2px] uppercase bg-light-red rounded-[10px] transition-colors duration-300 hover-not-disabled:bg-rose hover-not-disabled:text-light-red data-[active='true']:bg-light-red data-[active='true']:text-white disabled:cursor-not-allowed;
   }
 
   .component-gray {

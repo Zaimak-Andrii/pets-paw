@@ -1,5 +1,6 @@
 export type BreedType = {
   id: string;
+  bred_for: string;
   weight: {
     imperial: string;
     metric: string;

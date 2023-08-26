@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import type { CatType } from '@/types';
 import FavouriteButton from '../buttons/FavouriteButton';
+import Link from 'next/link';
+import { Route } from '@/constants/route';
 
 type Props = CatType & {
   variant?: 'favourite' | 'breed' | 'none';
@@ -15,9 +17,12 @@ export default function GalleryItem({ id, url, breeds, variant }: Props) {
         <div className="absolute left-0 top-0 w-full flex justify-center items-center h-full bg-light-red/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {variant === 'favourite' && <FavouriteButton id={id} />}
           {variant === 'breed' && (
-            <p className="absolute bottom-[10px] left-[10px] right-[10px] bg-white px-[20px] py-[5px] text-center text-light-red text-[16px]/[1.5] rounded-[10px] select-none">
+            <Link
+              href={`${Route.BREEDS}/${breeds.at(0)?.id}`}
+              className="absolute bottom-[10px] left-[10px] right-[10px] bg-white px-[20px] py-[5px] text-center text-light-red text-[16px]/[1.5] rounded-[10px] select-none"
+            >
               {breeds.at(0)?.name ?? 'No breed'}
-            </p>
+            </Link>
           )}
         </div>
       )}

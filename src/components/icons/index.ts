@@ -7,3 +7,4 @@ export { default as UploadIcon } from './UploadIcon';
 export { default as RefreshIcon } from './RefreshIcon';
 export { default as AscIcon } from './AscIcon';
 export { default as DescIcon } from './DescIcon';
+export { default as CloseIcon } from './CloseIcon';

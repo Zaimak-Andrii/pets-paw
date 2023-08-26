@@ -1,14 +1,14 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useSWR from 'swr';
 import type { OrderType } from '@/types';
 import Breadcrumb from '../Breadcrumb';
 import GalleryList from '../GalleryList';
-import AppLink from '../AppLink';
 import { UploadIcon } from '../icons';
 import GalleryFilter from '../GalleryFilter';
 import { getGalleryImagesService } from '@/services/api';
-import Loader from '../Loader/Loader';
+import Loader from '../Loader';
+import UploadButton from '../buttons/UploadButton';
 
 export default function Gallery() {
   const [order, setOrder] = useState<OrderType>('random');
@@ -53,14 +53,7 @@ export default function Gallery() {
     <section className="section">
       <div className="flex items-center justify-between">
         <Breadcrumb />
-        <AppLink
-          href={`/upload`}
-          variant="secondary"
-          className="px-[30px] py-[12px] text-[12px]/[16px]"
-        >
-          <UploadIcon />
-          Upload
-        </AppLink>
+        <UploadButton className="px-[30px] py-[12px] text-[12px]/[16px]" />
       </div>
       <GalleryFilter onChange={changeFilterParams} onRefresh={refreshHandler} />
 

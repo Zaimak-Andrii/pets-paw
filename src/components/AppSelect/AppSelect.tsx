@@ -35,7 +35,7 @@ export default function AppSelect({
       >
         <select
           name={name}
-          className={`w-full h-full px-[10px] py-[6px] text-[16px]/[1.5] bg-transparent outline-none`}
+          className={`w-full h-full px-[10px] py-[6px] text-[16px]/[1.5] bg-transparent bg-none outline-none`}
           onChange={changeHandler}
         >
           {options.map(({ label, value }) => (
