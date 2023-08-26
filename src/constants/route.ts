@@ -6,4 +6,5 @@ export enum Route {
   LIKES = '/likes',
   FAVOURITES = '/favourites',
   DISLIKES = '/dislikes',
+  SEARCH = '/search',
 }

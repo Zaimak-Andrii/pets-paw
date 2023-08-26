@@ -4,7 +4,6 @@ import useSWR from 'swr';
 import type { OrderType } from '@/types';
 import Breadcrumb from '../Breadcrumb';
 import GalleryList from '../GalleryList';
-import { UploadIcon } from '../icons';
 import GalleryFilter from '../GalleryFilter';
 import { getGalleryImagesService } from '@/services/api';
 import Loader from '../Loader';

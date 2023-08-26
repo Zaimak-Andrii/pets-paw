@@ -192,3 +192,25 @@ export const uploadFileService = async (file: File) => {
 
   return await result.json();
 };
+
+export const searchImagesByBreedNameService = async (name: string) => {
+  const breeds = await getAllBreedsService();
+
+  const searchQuery = breeds.reduce((acc, breed) => {
+    if (breed.name.toLowerCase().includes(name.toLowerCase())) return acc + breed.id + ',';
+
+    return acc;
+  }, '');
+
+  console.log('SearchQuery', searchQuery);
+
+  if (searchQuery.length === 0) return [];
+
+  const result = await privateFetch(
+    `${url}/images/search?breed_ids=${searchQuery}&limit=20&has_breeds=1`
+  );
+
+  const data = await result.json();
+
+  return data;
+};

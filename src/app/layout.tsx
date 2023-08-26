@@ -14,6 +14,9 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: 'PetsPaw',
   description: 'Pets paw web-site',
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
