@@ -1,12 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { twMerge } from 'tailwind-merge';
+import type { SelectOptionType } from '@/types';
 
 type Props = {
   name: string;
-  options: {
-    label: string;
-    value: string;
-  }[];
+  options: SelectOptionType[];
   label?: string;
   className?: string;
   variant?: 'primary' | 'secondary';
@@ -29,13 +27,13 @@ export default function AppSelect({
     <label className={twMerge('flex flex-col', className)}>
       {label && <span className="text-[10px]/[1.8] font-medium uppercase">{label}</span>}
       <span
-        className={`flex items-center h-[40px] pr-[10px] ${
+        className={`${
           variant === 'primary' ? 'bg-white text-dark' : 'bg-light text-primary'
-        }  rounded-[10px] border-2 border-transparent transition-border duration-300 hover:border-rose`}
+        } select`}
       >
         <select
           name={name}
-          className={`w-full h-full px-[10px] py-[6px] text-[16px]/[1.5] bg-transparent bg-none outline-none`}
+          className={`w-full h-full pl-[10px] pr-[31px] py-[6px] bg-transparent outline-none appearance-none`}
           onChange={changeHandler}
         >
           {options.map(({ label, value }) => (

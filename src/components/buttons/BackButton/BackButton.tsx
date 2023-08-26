@@ -12,6 +12,7 @@ export default function BackButton() {
       type="button"
       data-active={false}
       onClick={back}
+      aria-label="Back to previous page"
     >
       {<LeftArrowIcon />}
     </button>

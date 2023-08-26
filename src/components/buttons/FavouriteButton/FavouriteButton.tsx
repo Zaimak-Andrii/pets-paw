@@ -18,6 +18,7 @@ export default function FavouriteButton({ id }: Props) {
       variant="secondary"
       className="bg-white w-[40px] h-[40px] p-[10px]"
       onClick={clickHandler}
+      aria-label="Add to favourite button"
     >
       <FavoriteIcon />
     </AppButton>

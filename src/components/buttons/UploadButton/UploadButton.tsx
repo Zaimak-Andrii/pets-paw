@@ -20,7 +20,7 @@ export default function UploadButton(props: AppButtonProps) {
   return (
     <>
       <AppButton variant="secondary" {...props} onClick={showUpload}>
-        <UploadIcon />
+        <UploadIcon className="w-[16px] h-[16px]" />
         Upload
       </AppButton>
       {isShowUpload && <UploadWindow onClose={closeUpload} />}

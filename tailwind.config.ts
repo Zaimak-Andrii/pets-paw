@@ -14,6 +14,7 @@ const config: Config = {
         'main-page-responsive':
           "image-set(url('/images/image-main-page@1x.webp') 1x, url('/images/image-main-page@2x.webp') 2x)",
         upload: "url('/images/upload-bg.svg')",
+        'select-arrow': "url('/images/select-arrow.svg')",
       },
       transitionProperty: {
         border: 'border-color',

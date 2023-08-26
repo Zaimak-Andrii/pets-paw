@@ -53,8 +53,13 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
           onChange={(value: string) => onChange('limit', value)}
         />
 
-        <AppButton variant="secondary" onClick={onRefresh} className="bg-white">
-          <RefreshIcon />
+        <AppButton
+          variant="secondary"
+          onClick={onRefresh}
+          className="bg-white"
+          aria-label="Refresh images"
+        >
+          <RefreshIcon className="w-[20px] h-[20px]" />
         </AppButton>
       </div>
     </div>

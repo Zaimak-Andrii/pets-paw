@@ -10,6 +10,7 @@ export default function SearchButton({ className, ...props }: HTMLAttributes<HTM
         className
       )}
       type="submit"
+      aria-label="Search button"
       {...props}
     >
       <SearchIcon />

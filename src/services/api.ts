@@ -14,26 +14,26 @@ export const privateFetch = async (input: RequestInfo | URL, options?: RequestIn
   });
 };
 
-export const getGalleryImagesService = async (
-  order: string = 'random',
-  type: string | null = null,
-  breeds: string = 'none',
-  limit: string = '5'
-) => {
-  const urlParams = new URLSearchParams({
-    page: '0',
-    limit,
-    order,
-    breed_ids: breeds === 'none' ? '' : breeds,
-    mime_types: type ?? '',
-  });
+// export const getGalleryImagesServiceOld = async (
+//   order: string = 'random',
+//   type: string | null = null,
+//   breeds: string = 'none',
+//   limit: string = '5'
+// ) => {
+//   const urlParams = new URLSearchParams({
+//     page: '0',
+//     limit,
+//     order,
+//     breed_ids: breeds === 'none' ? '' : breeds,
+//     mime_types: type ?? '',
+//   });
 
-  const result = await privateFetch(`${url}/images/search?${urlParams}`);
+//   const result = await privateFetch(`${url}/images/search?${urlParams}`);
 
-  if (!result.ok) throw new Error('Ooooops! Bad request!');
+//   if (!result.ok) throw new Error('Ooooops! Bad request!');
 
-  return await result.json();
-};
+//   return await result.json();
+// };
 
 export const addToFavoriteService = async (id: string) => {
   const rawBody = JSON.stringify({
@@ -69,25 +69,25 @@ export const getFavoritesService = async (): Promise<CatType[]> => {
   return data.map(i => i.image);
 };
 
-export const getBreedsImagesService = async (
-  order: string = 'random',
-  breed: string = 'none',
-  limit: string = '5'
-) => {
-  const urlParams = new URLSearchParams({
-    page: '0',
-    limit,
-    order,
-    has_breeds: '1',
-    breed_ids: breed === 'none' ? '' : breed,
-  });
+// export const getBreedsImagesServiceOld = async (
+//   order: string = 'random',
+//   breed: string = 'none',
+//   limit: string = '5'
+// ) => {
+//   const urlParams = new URLSearchParams({
+//     page: '0',
+//     limit,
+//     order,
+//     has_breeds: '1',
+//     breed_ids: breed === 'none' ? '' : breed,
+//   });
 
-  const result = await privateFetch(`${url}/images/search?${urlParams}`);
+//   const result = await privateFetch(`${url}/images/search?${urlParams}`);
 
-  if (!result.ok) throw new Error('Ooooops! Bad request!');
+//   if (!result.ok) throw new Error('Ooooops! Bad request!');
 
-  return await result.json();
-};
+//   return await result.json();
+// };
 
 export const getRandomImageService = async (): Promise<CatType | undefined> => {
   const urlParams = new URLSearchParams({
@@ -193,16 +193,14 @@ export const uploadFileService = async (file: File) => {
   return await result.json();
 };
 
-export const searchImagesByBreedNameService = async (name: string) => {
+export const searchImagesByBreedNameService = async ({ value }: { [key: string]: string }) => {
   const breeds = await getAllBreedsService();
 
   const searchQuery = breeds.reduce((acc, breed) => {
-    if (breed.name.toLowerCase().includes(name.toLowerCase())) return acc + breed.id + ',';
+    if (breed.name.toLowerCase().includes(value.toLowerCase())) return acc + breed.id + ',';
 
     return acc;
   }, '');
-
-  console.log('SearchQuery', searchQuery);
 
   if (searchQuery.length === 0) return [];
 
@@ -213,4 +211,49 @@ export const searchImagesByBreedNameService = async (name: string) => {
   const data = await result.json();
 
   return data;
+};
+
+export const getGalleryImagesService = async ({
+  limit,
+  order,
+  breed,
+  type,
+}: {
+  [key: string]: string;
+}) => {
+  const urlParams = new URLSearchParams({
+    page: '0',
+    limit,
+    order,
+    breed_ids: breed === 'none' ? '' : breed,
+    mime_types: type ?? '',
+  });
+
+  const result = await privateFetch(`${url}/images/search?${urlParams}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
+};
+
+export const getBreedsImagesService = async ({
+  limit = '5',
+  order = 'random',
+  breed = 'none',
+}: {
+  [key: string]: string;
+}) => {
+  const urlParams = new URLSearchParams({
+    page: '0',
+    limit,
+    order,
+    has_breeds: '1',
+    breed_ids: breed === 'none' ? '' : breed,
+  });
+
+  const result = await privateFetch(`${url}/images/search?${urlParams}`);
+
+  if (!result.ok) throw new Error('Ooooops! Bad request!');
+
+  return await result.json();
 };
