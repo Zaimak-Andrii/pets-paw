@@ -33,7 +33,7 @@ const navItemsList = [
 export default function Navigation({}: Props) {
   return (
     <nav>
-      <ul className="list-none flex flex-col gap-4 tablet:flex-row">
+      <ul className="list-none flex flex-col gap-4 tablet:flex-row max-tablet:justify-center">
         {navItemsList.map(item => (
           <NavigationItem key={item.text} {...item} />
         ))}

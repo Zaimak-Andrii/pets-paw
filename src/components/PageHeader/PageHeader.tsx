@@ -2,9 +2,8 @@
 
 import SearchBar from '../SearchBar';
 import HeaderNavigation from '../HeaderNavigation';
-import AppButton from '../buttons/AppButton/AppButton';
-import { MenuIcon } from '../icons';
 import { useIsHomePage } from '@/hooks/useIsHomePage';
+import MenuButton from '../buttons/MenuButton/MenuButton';
 
 export default function PageHeader() {
   const isHome = useIsHomePage();
@@ -15,9 +14,7 @@ export default function PageHeader() {
         isHome && 'visibility-hidden'
       }`}
     >
-      <AppButton className="desktop:visibility-hidden px-[15px] py-[21px]">
-        <MenuIcon className="w-[30px] h-[18px]" />
-      </AppButton>
+      <MenuButton className="desktop:visibility-hidden px-[15px] py-[21px]" />
       <SearchBar />
       <HeaderNavigation />
     </header>
