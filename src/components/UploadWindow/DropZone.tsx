@@ -31,7 +31,7 @@ export default function DropZone({ file, error, onChange }: Props) {
     <div
       {...getRootProps({
         className: twMerge(
-          'cursor-pointer relative flex justify-center items-center w-full h-[320px] mb-[20px] p-[20px] bg-white bg-upload bg-no-repeat bg-center border-2 border-dashed border-rose rounded-[20px]',
+          'cursor-pointer relative flex justify-center items-center w-full max-tablet:h-[168px] h-[320px] mb-[20px] p-[20px] bg-white bg-upload bg-no-repeat bg-center border-2 border-dashed border-rose rounded-[20px]',
           `${error ? 'bg-rose border-light-red' : ''}`
         ),
       })}
@@ -42,7 +42,7 @@ export default function DropZone({ file, error, onChange }: Props) {
           {isDragActive ? (
             <p className="select-none">Drop the files here ...</p>
           ) : (
-            <p className="select-none">
+            <p className="select-none px-[48px]">
               <span className="text-dark font-medium">Drag here</span> your file or{' '}
               <span className="text-dark font-medium">Click here</span> to upload
             </p>
@@ -51,7 +51,7 @@ export default function DropZone({ file, error, onChange }: Props) {
       )}
 
       {file && (
-        <div className="w-[556px] h-[280px] overflow-hidden rounded-[10px]">
+        <div className="w-[556px] max-tablet:h-[148px] h-[280px] overflow-hidden rounded-[10px]">
           <Image
             className="w-full h-full object-cover"
             src={URL.createObjectURL(file)}

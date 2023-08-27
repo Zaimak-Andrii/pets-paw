@@ -68,18 +68,18 @@ export default function UploadWindow({ onClose }: Props) {
     document?.body &&
     createPortal(
       <div className="fixed top-0 left-0 w-full h-full bg-dark/60" onClick={clickBackdropHandler}>
-        <Container className="p-[30px] pointer-events-none">
-          <div className="relative w-[680px] h-full px-[20px] py-[100px] ml-auto text-[20px] bg-light rounded-[20px] pointer-events-auto">
+        <Container className="desktop:p-[30px] pointer-events-none">
+          <div className="relative w-full desktop:w-[680px] h-full px-[20px] py-[100px] ml-auto text-[20px] bg-light desktop:rounded-[20px] pointer-events-auto">
             <AppButton
               className="absolute top-[20px] right-[20px] w-[40px] h-[40px]"
               onClick={onClose}
             >
               <CloseIcon />
             </AppButton>
-            <h2 className="w-fit mx-auto mb-[10px] text-[36px]/[normal] text-dark font-medium">
+            <h2 className="w-fit mx-auto mb-[10px] text-[20px]/[normal] desktop:text-[36px] text-dark font-medium">
               Upload a .jpg or .png Cat Image
             </h2>
-            <p className="w-fit mx-auto mb-[40px]">
+            <p className="w-fit mx-auto mb-[20px] talet:mb-[40px] text-center">
               Any uploads must comply with the{' '}
               <Link href="https://thecatapi.com/privacy" className="text-light-red">
                 upload guidelines
@@ -91,11 +91,11 @@ export default function UploadWindow({ onClose }: Props) {
 
             {file ? (
               <>
-                <p className="w-fit mx-auto mb-[20px]">Image File Name: {file.name}</p>
+                <p className="w-fit mx-auto mb-[20px] text-center">Image File Name: {file.name}</p>
                 {!error && (
                   <AppButton
                     variant="secondary"
-                    className="component-red mx-auto px-[30px] py-[12px] gap-[10px]"
+                    className="component-red max-tablet:w-full mx-auto px-[30px] py-[12px] gap-[10px]"
                     onClick={uploadHandler}
                     disabled={isLoading}
                   >
