@@ -17,7 +17,7 @@ export default function Message({
   return (
     <p
       className={twMerge(
-        ` flex items-center gap-[20px] w-full px-[20px] py-[18px] text-primary ${
+        ` flex items-center gap-[20px] gap-y-[10px] w-full px-[20px] py-[18px] text-primary ${
           variant === 'gray' ? 'bg-light ' : 'bg-white'
         } rounded-[10px]`,
         className

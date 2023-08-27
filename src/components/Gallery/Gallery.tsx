@@ -39,9 +39,9 @@ export default function Gallery() {
 
   return (
     <section className="section">
-      <div className="flex items-center justify-between">
+      <div className="flex max-tablet:flex-col gap-[10px] tablet:items-center tablet:justify-between">
         <Breadcrumb />
-        <UploadButton className="px-[30px] py-[12px] text-[12px]/[16px]" />
+        <UploadButton className="max-tablet:w-full px-[30px] py-[12px] text-[12px]/[16px]" />
       </div>
 
       <GalleryFilter onChange={changeFilterParams} onRefresh={refreshHandler} />

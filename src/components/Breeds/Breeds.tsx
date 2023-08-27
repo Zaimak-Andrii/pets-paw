@@ -27,7 +27,7 @@ export default function Breeds() {
 
   return (
     <section className="section">
-      <div className="flex gap-[10px]">
+      <div className="flex max-tablet:flex-col gap-[10px]">
         <Breadcrumb />
         <BreedsFilter onChange={changeFilterParams} />
       </div>

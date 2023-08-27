@@ -10,7 +10,7 @@ type Props = CatType & {
 
 export default function GalleryItem({ id, url, breeds, variant }: Props) {
   return (
-    <li className="group relative w-full rounded-[20px] overflow-hidden grid-1-8:row-span-2 grid-4-9:row-span-2 grid-4-9:col-span-2 skeleton">
+    <li className="group relative w-full max-tablet:h-[206px] rounded-[20px] overflow-hidden grid-1-8:row-span-2 grid-4-9:row-span-2 grid-4-9:col-span-2 skeleton">
       <Image className="w-full h-full object-cover" src={url} width={200} height={140} alt={url} />
 
       {variant !== 'none' && (

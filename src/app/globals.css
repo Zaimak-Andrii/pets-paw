@@ -49,11 +49,11 @@ body.modal-open {
   }
 
   .page {
-    @apply flex flex-col gap-[10px] w-full h-full p-[30px];
+    @apply flex flex-col gap-[10px] w-full desktop:w-[740px] h-full p-[20px] desktop:p-[30px];
   }
 
   .section {
-    @apply flex flex-col gap-[20px] w-full h-full p-[20px] overflow-hidden bg-white rounded-[20px];
+    @apply flex flex-col gap-[20px] grow w-full p-[20px] bg-white rounded-[20px];
   }
 
   .component-default {

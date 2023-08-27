@@ -16,20 +16,21 @@ export default function BreedInfo() {
   );
 
   return (
-    <section className="flex flex-col gap-[20px] w-full h- h-full p-[20px] overflow-hidden bg-white rounded-[20px]">
+    <section className="section">
       <Breadcrumb />
       <div className="flex flex-col flex-grow gap-[52px] w-full">
-        <div className="relative flex-shrink-0 w-full h-[360px] rounded-[20px] skeleton">
+        <div className="relative flex-shrink-0 w-full h-[166px] tablet:h-[360px] rounded-[20px] skeleton">
           {info && <BreedInfoSwiper name={info.name} images={images} />}
         </div>
-        <div className="relative px-[60px] pt-[26px] py-[40px] border-2 border-rose rounded-[20px]">
-          <h2 className="absolute top-0 left-1/2 w-max px-[40px] py-[5px] text-dark font-medium text-[36px]/[normal] bg-white rounded-[20px] -translate-x-1/2 -translate-y-1/2">
+
+        <div className="relative px-[20px] tablet:px-[60px] pt-[19px] tablet:pt-[26px] py-[14px] tablet:py-[40px] border-2 border-rose rounded-[20px]">
+          <h2 className="absolute top-0 left-1/2 w-max px-[20px] tablet:px-[40px] py-[5px] text-dark font-medium text-[20px][normal] tablet:text-[36px] bg-white rounded-[20px] -translate-x-1/2 -translate-y-1/2">
             {info?.name}
           </h2>
-          <h3 className="w-fit mx-auto mb-[20px] text-[20px]/[normal] font-medium">
+          <h3 className="w-fit mx-auto mb-[20px] text-[16px]/[normal] tablet:text-[20px] font-medium">
             {info?.bred_for ?? 'Family companion cat'}
           </h3>
-          <div className="flex gap-[20px] text-[16px]/[normal]">
+          <div className="flex max-tablet:flex-col max-tablet:gap-[10px] :gap-[20px] text-[16px]/[normal]">
             <div className="flex-grow w-full">
               <p className="text-dark font-medium">Temperament:</p>
               <p>{info?.temperament}</p>
@@ -37,17 +38,20 @@ export default function BreedInfo() {
             <ul className="flex flex-col gap-[10px] flex-grow w-full">
               <li>
                 <p>
-                  <span className="text-dark font-medium">Origin:</span> {info?.origin}
+                  <span className="max-tablet:block text-dark font-medium">Origin:</span>{' '}
+                  {info?.origin}
                 </p>
               </li>
               <li>
                 <p>
-                  <span className="text-dark font-medium">Weight:</span> {info?.weight.metric} kg
+                  <span className="max-tablet:block text-dark font-medium">Weight:</span>{' '}
+                  {info?.weight.metric} kg
                 </p>
               </li>
               <li>
                 <p>
-                  <span className="text-dark font-medium">Life span:</span> {info?.life_span} years
+                  <span className="max-tablet:block text-dark font-medium">Life span:</span>{' '}
+                  {info?.life_span} years
                 </p>
               </li>
             </ul>

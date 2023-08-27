@@ -29,7 +29,7 @@ const getActionIcon = (action: LogMessageType['action']) => {
   };
 
   return createElement(icons[action], {
-    className: `w-[20px] h-[20px] ml-auto ${iconColor[action]}`,
+    className: `w-[20px] h-[20px] ml-auto ${iconColor[action]} max-tablet:order-[-1]`,
   });
 };
 
@@ -37,9 +37,11 @@ export default function LogItem({ time, imageId, action }: LogMessageType) {
   return (
     <li>
       <Message
-        className="p-[15px]"
+        className="p-[15px] flex-wrap"
         startIcon={
-          <span className="px-[10px] py-[3px] text-dark bg-white rounded-[5px]">{time}</span>
+          <span className="px-[10px] py-[3px] text-dark bg-white rounded-[5px] max-tablet:order-[-1]">
+            {time}
+          </span>
         }
         endIcon={action !== 'remove-favorite' ? (getActionIcon(action) as ReactElement) : undefined}
       >

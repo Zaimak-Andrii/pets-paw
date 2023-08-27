@@ -16,10 +16,10 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
   const { data: breeds = [] } = useSWR('breeds', getAllBreedsService);
 
   return (
-    <div className="flex flex-col flex-wrap gap-x-[20px] gap-y-[10px] h-[156px] p-[20px] pt-[10px] bg-light rounded-[20px]">
+    <div className="flex flex-col tablet:flex-wrap gap-x-[20px] gap-y-[10px] tablet:h-[156px] p-[20px] pt-[10px] bg-light rounded-[20px]">
       <AppSelect
         name="order"
-        className="flex-grow w-[calc((100%-20px)/2)]"
+        className="grow tablet:w-[calc((100%-20px)/2)]"
         label="Order"
         options={orderOptions}
         onChange={(value: string) => onChange('order', value)}
@@ -27,7 +27,7 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
 
       <AppSelect
         name="type"
-        className="flex-grow w-[calc((100%-20px)/2)]"
+        className="grow tablet:w-[calc((100%-20px)/2)]"
         label="Type"
         options={typeOptions}
         onChange={(value: string) => onChange('type', value)}
@@ -35,7 +35,7 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
 
       <AppSelect
         name="breeds"
-        className="flex-grow w-[calc((100%-20px)/2)]"
+        className="grow tablet:w-[calc((100%-20px)/2)]"
         label="Breeds"
         options={[
           { label: 'None', value: 'none' },
@@ -44,10 +44,10 @@ export default function GalleryFilter({ onChange, onRefresh }: Props) {
         onChange={(value: string) => onChange('breed', value)}
       />
 
-      <div className="flex items-end gap-[10px]  w-[calc((100%-20px)/2)]">
+      <div className="flex max-tablet:flex-col tablet:items-end gap-[10px]  tablet:w-[calc((100%-20px)/2)]">
         <AppSelect
           name="limit"
-          className="flex-grow"
+          className="grow "
           label="Limit"
           options={limitOptions}
           onChange={(value: string) => onChange('limit', value)}

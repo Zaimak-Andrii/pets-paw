@@ -36,7 +36,7 @@ export default function GalleryList({ name, variant = 'favourite', requestFn, op
       ) : error ? (
         <ErrorMessage>{error.message}</ErrorMessage>
       ) : list.length > 0 ? (
-        <ul className="mx-[-20px] px-[20px] grid h-[calc(100%-60px)] grid-cols-3 auto-rows-[140px] gap-[20px] overflow-y-auto ">
+        <ul className="mx-[-20px] px-[20px] flex flex-col tablet:grid h-[calc(100%-60px)] grid-cols-3 auto-rows-[140px] gap-[20px] overflow-y-auto ">
           {list.map((image: CatType) => (
             <GalleryItem key={image.id} {...image} variant={variant} />
           ))}

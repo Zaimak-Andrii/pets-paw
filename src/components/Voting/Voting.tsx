@@ -45,7 +45,7 @@ export default function Voting() {
       <Breadcrumb />
 
       <div className="flex flex-col flex-grow gap-[52px] w-full">
-        <div className="relative flex-shrink-0 w-full h-[360px] rounded-[20px] skeleton">
+        <div className="relative flex-shrink-0 w-full h-[166px] tablet:h-[360px] rounded-[20px] skeleton">
           {image && (
             <Image
               className="w-full h-full object-cover rounded-[20px]"

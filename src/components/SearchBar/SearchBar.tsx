@@ -20,7 +20,7 @@ export default function SearchBar() {
   };
 
   return (
-    <form className="w-full" onSubmit={submitHandler}>
+    <form className="w-full max-desktop:grow max-tablet:order-1" onSubmit={submitHandler}>
       <label className="relative flex justify-center items-center flex-grow bg-white rounded-[20px] overflow-hidden border-transparent border-2 transition-border duration-300 hover-not-focus:border-rose focus-within:border-light-red ">
         <input
           ref={inputRef}

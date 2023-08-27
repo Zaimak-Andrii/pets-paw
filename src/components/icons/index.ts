@@ -11,3 +11,4 @@ export { default as DescIcon } from './DescIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as ErrorIcon } from './ErrorIcon';
 export { default as SucceessIcon } from './SucceessIcon';
+export { default as MenuIcon } from './MenuIcon';

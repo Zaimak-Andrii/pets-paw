@@ -16,10 +16,10 @@ export default function NavigationItem({ href, imageSrc, text, color, alt }: Pro
   const isActive = useIsActiveRoute(href);
 
   return (
-    <li className="group w-[138px]" data-active={isActive}>
+    <li className="group w-full tablet:w-[138px]" data-active={isActive}>
       <Link href={href}>
         <div
-          className={`h-[198px] mb-[10px] ${color} rounded-[20px] border-4 border-white border-opacity-60 transition-border duration-300 group-hover:border-opacity-100 group-data-[active='true']:border-rose`}
+          className={`hidden tablet:block h-[198px] mb-[10px] ${color} rounded-[20px] border-4 border-white border-opacity-60 transition-border duration-300 group-hover:border-opacity-100 group-data-[active='true']:border-rose`}
         >
           <Image src={imageSrc} alt={alt} />
         </div>

@@ -13,10 +13,10 @@ export default function BreedsFilter({ onChange }: Props) {
   const { data: breeds = [] } = useSWR('breeds', getAllBreedsService);
 
   return (
-    <div className="flex gap-[10px] w-full">
+    <div className="flex max-tablet:flex-wrap gap-[10px] w-full">
       <AppSelect
         name="breed"
-        className="flex-grow"
+        className="max-tablet:w-full grow"
         variant="secondary"
         options={[
           { label: 'All breeds', value: 'none' },
@@ -26,6 +26,7 @@ export default function BreedsFilter({ onChange }: Props) {
       />
 
       <AppSelect
+        className="max-tablet:grow"
         name="limit"
         variant="secondary"
         options={limitOptions}

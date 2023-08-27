@@ -34,13 +34,13 @@ export default function VotingButton({ variant, className, onFetch, disabled, ..
   return (
     <button
       type="button"
-      className={`flex justify-center items-center w-[80px] h-[80px] p-[25px] text-white transition-colors duration-300 ${variantStyles[variant]} disabled:cursor-not-allowed`}
+      className={`flex justify-center items-center w-[60px] tablet:w-[80px] h-[60px] tablet:h-[80px] p-[18px] tablet:p-[25px] text-white transition-colors duration-300 ${variantStyles[variant]} disabled:cursor-not-allowed`}
       onClick={clickHandler}
       disabled={disabled || isLoading}
       {...props}
     >
       {isLoading ? (
-        <ClipLoader size={30} color="#FFFFFF" />
+        <ClipLoader size={24} color="#FFFFFF" />
       ) : (
         createElement(getVotingIcon(variant), { className: 'w-[30px] h-[30px]' })
       )}

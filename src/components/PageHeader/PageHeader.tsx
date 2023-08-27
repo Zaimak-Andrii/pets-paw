@@ -1,17 +1,24 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import Search from '../SearchBar';
+import SearchBar from '../SearchBar';
 import HeaderNavigation from '../HeaderNavigation';
-import { Route } from '@/constants/route';
+import AppButton from '../buttons/AppButton/AppButton';
+import { MenuIcon } from '../icons';
+import { useIsHomePage } from '@/hooks/useIsHomePage';
 
 export default function PageHeader() {
-  const pathName = usePathname();
-  const isMainPage = pathName === Route.HOME;
+  const isHome = useIsHomePage();
 
   return (
-    <header className={`flex gap-[10px] ${isMainPage && 'visibility-hidden'}`}>
-      <Search />
+    <header
+      className={`flex max-desktop:justify-between max-tablet:flex-wrap gap-[10px] ${
+        isHome && 'visibility-hidden'
+      }`}
+    >
+      <AppButton className="desktop:visibility-hidden px-[15px] py-[21px]">
+        <MenuIcon className="w-[30px] h-[18px]" />
+      </AppButton>
+      <SearchBar />
       <HeaderNavigation />
     </header>
   );

@@ -1,13 +1,24 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import logo from '/public/images/logo.svg';
 import { Route } from '@/constants/route';
 import { Navigation } from '../Navigation';
 
 export default function SideBar() {
+  const pathName = usePathname();
+  const isHome = pathName === Route.HOME;
+
   return (
-    <aside className="flex-grow p-5 desktop:w-[665px] desktop:py-[30px] desktop:pl-[147px] desktop:pr-[72px]">
-      <header className="desktop:mb-20">
+    <aside
+      className={`
+      fixed left-0 top-0
+      ${
+        isHome ? 'block' : 'max-desktop:visibility-hidden'
+      } flex-grow p-5 w-full desktop:w-[665px] desktop:py-[30px] desktop:pl-[147px] desktop:pr-[72px]`}
+    >
+      <header className="mb-20">
         <Link href={Route.HOME} className="w-fit block">
           <Image src={logo} alt="Site logo" />
         </Link>
