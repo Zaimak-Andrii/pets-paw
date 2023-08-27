@@ -211,7 +211,7 @@ export const getBreedsImagesService = async ({
   breed = 'none',
 }: {
   [key: string]: string;
-}) => {
+}): Promise<CatType[]> => {
   const urlParams = new URLSearchParams({
     page: '0',
     limit,

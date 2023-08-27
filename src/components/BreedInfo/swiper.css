@@ -1,0 +1,22 @@
+.swiper {
+  position: static;
+}
+
+.swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: fit-content;
+  padding: 10px;
+  background-color: #ffffff;
+  transform: translate(-50%, 50%);
+  border-radius: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+
+  background-color: #ff868e;
+}

@@ -1,34 +1,26 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
 import useSWR from 'swr';
 import Breadcrumb from '../Breadcrumb';
-import { getBreedInfoByIdService } from '@/services/api';
+import { getBreedInfoByIdService, getBreedsImagesService } from '@/services/api';
+import BreedInfoSwiper from './BreedInfoSwiper';
 
 export default function BreedInfo() {
   const { breedId } = useParams();
   const { data: info } = useSWR(['breed', breedId], () =>
     getBreedInfoByIdService(breedId as string)
   );
-
-  console.log(info);
+  const { data: images = [] } = useSWR(['images', '5', 'asc', breedId], () =>
+    getBreedsImagesService({ limit: '5', order: 'asc,', breed: breedId as string })
+  );
 
   return (
     <section className="flex flex-col gap-[20px] w-full h- h-full p-[20px] overflow-hidden bg-white rounded-[20px]">
       <Breadcrumb />
       <div className="flex flex-col flex-grow gap-[52px] w-full">
         <div className="relative flex-shrink-0 w-full h-[360px] rounded-[20px] skeleton">
-          {info && (
-            <></>
-            // <Image
-            //   className="w-full h-full object-cover rounded-[20px]"
-            //   src={info.}
-            //   alt={image?.id}
-            //   width={640}
-            //   height={360}
-            // />
-          )}
+          {info && <BreedInfoSwiper name={info.name} images={images} />}
         </div>
         <div className="relative px-[60px] pt-[26px] py-[40px] border-2 border-rose rounded-[20px]">
           <h2 className="absolute top-0 left-1/2 w-max px-[40px] py-[5px] text-dark font-medium text-[36px]/[normal] bg-white rounded-[20px] -translate-x-1/2 -translate-y-1/2">
